@@ -1,12 +1,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Cover Letter - [Company], [Role]
-%
-% Example cover letter with placeholder content. This is the structural
-% reference for /apply (see 06-cover-letter-templates.md) and the CI smoke
-% test for cover.cls: it must always compile with xelatex to exactly 1 page.
-% It demonstrates the correct itemize pattern: the list sits OUTSIDE
-% \lettercontent{} (whose trailing \\ errors on \end{itemize}) and is
-% wrapped in Raleway-Medium so the bullet font matches the body.
+% Cover Letter - Ritik Kumar (Master Template)
+% Structural reference for /apply and CI smoke test for cover.cls.
+% Compiles with: xelatex cover_example.tex
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \documentclass[]{cover}
@@ -23,7 +18,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %     TITLE NAME
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\namesection{}{\Huge{[YOUR NAME]}}{  \href{mailto:your.email@example.com}{your.email@example.com} | [+XX XXXXXXXXXX] |  \urlstyle{same}\href{https://www.linkedin.com/in/yourprofile}{LinkedIn}
+\namesection{}{\Huge{Ritik Kumar}}{  \href{mailto:ritik.myworkmail@gmail.com}{ritik.myworkmail@gmail.com} | +91-9693882391 |  \urlstyle{same}\href{https://linkedin.com/in/ritikkumar992}{LinkedIn}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -31,31 +26,30 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \currentdate{\today}
-\lettercontent{Dear [Hiring Manager / Team],}
+\lettercontent{Dear Hiring Team,}
 
-\lettercontent{[Opening paragraph: name the role and where you found it, state your strongest connection to it in one sentence, and preview why you are a fit. Keep it to 2--3 sentences.]}
+\lettercontent{I am writing to express my strong interest in the Flutter Developer position. With over 2 years of hands-on experience building, architecting, and maintaining production-grade Android and iOS applications at scale, I am excited about the opportunity to contribute to your engineering team.}
 
-\lettercontent{[Body paragraph: your most relevant experience, framed toward the tasks in the posting. Follow with 3--5 concrete bullets:]}
+\lettercontent{At Skyking Courier, I lead two production Flutter applications end-to-end—driving architecture, quality assurance, releases, and live production incident response across 1,800+ branches and 20,000+ daily transactions. Some key highlights from my experience include:}
 
 {\raggedright\fontspec[Path = OpenFonts/fonts/raleway/]{Raleway-Medium}\fontsize{11pt}{13pt}\selectfont
 \begin{itemize}
-    \item \textbf{[Achievement 1]:} [concrete result with a number where possible]
-    \item \textbf{[Achievement 2]:} [skill or project mapped to a posting requirement]
-    \item \textbf{[Achievement 3]:} [evidence for a nice-to-have requirement]
+    \item \textbf{High Stability \& Rapid Delivery:} Shipped 20+ production releases within 12 months with a same-day hotfix pipeline, maintaining 99\%+ crash-free app stability.
+    \item \textbf{Clean Architecture \& State Management:} Applied Clean Architecture, MVVM, and BLoC/Provider state management with modular dependency injection (GetIt) and Repository Pattern for clean data-layer separation.
+    \item \textbf{Complex Logistics \& Backend Integration:} Architected e-Way Bill GST portal synchronization, multi-branch inventory, and integrated self-developed .NET REST APIs and SQL Server handling 20,000+ daily bookings.
+    \item \textbf{Strong Algorithmic Rigor:} AIR 3266 in TCS CodeVita and 800+ solved problems on LeetCode, driving performant, low-latency, and memory-optimized mobile code.
 \end{itemize}\par}
 \vspace{6pt}
 
-\lettercontent{[Connection paragraph: why this company specifically. Reference a verified specific: a product, a stated priority, a team. Never generic.]}
+\lettercontent{I am drawn to your team's commitment to building reliable, high-performance digital products. My background in full lifecycle mobile development—from architecture and UI responsiveness to Play Store/App Store provisioning and CI/CD—enables me to take full ownership of features and deliver immediate value.}
 
-\lettercontent{[Personal fit paragraph: behavioral strengths and what you bring to the team, 2--3 sentences.]}
+\lettercontent{I would welcome the opportunity to discuss how my technical skills and proactive engineering approach can support your product goals.}
 
-\lettercontent{I look forward to hearing from you.}
+\lettercontent{Thank you for your time and consideration.}
 
 \begin{flushright}
-% Note: no trailing \\ inside \closing{} - cover.cls appends its own \\, and a
-% doubled break triggers "There's no line here to end."
 \closing{Kind regards,}
 
-\signature{[YOUR NAME]}
+\signature{Ritik Kumar}
 \end{flushright}
 \end{document}
