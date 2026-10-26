@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Job Search App - Ritik Kumar</title>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <style>
+    body {
+      background-color: var(--background, #0f172a);
+      color: var(--foreground, #f8fafc);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: var(--border, #334155);
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body class="p-4 md:p-8 custom-scrollbar min-h-screen">
+  <div class="max-w-6xl mx-auto space-y-6">
+
+    <!-- Header -->
+    <header class="flex flex-col md:flex-row md:items-center justify-between gap-4 p-5 rounded-2xl bg-[var(--card,#1e293b)] border border-[var(--border,#334155)] shadow-md">
+      <div class="flex items-center gap-4">
+        <div class="w-12 h-12 rounded-xl bg-blue-600/20 border border-blue-500/30 flex items-center justify-center text-blue-400 font-bold text-xl">
+          RK
+        </div>
+        <div>
+          <h1 class="text-xl font-bold tracking-tight text-[var(--foreground,#f8fafc)] flex items-center gap-2">
+            Ritik Kumar · Career Engine <span class="text-xs px-2.5 py-0.5 rounded-full font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Live API Connected</span>
+          </h1>
+          <p class="text-xs text-[var(--muted-foreground,#94a3b8)]">Full-stack Mobile Engineer · 2+ Years Exp · Clean Architecture · BLoC / Provider / Riverpod</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-2">
+        <a href="https://github.com/Ritikkumar992/ai-job-search" target="_blank" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs text-slate-300 font-medium flex items-center gap-1.5 border border-slate-700">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+          <span>GitHub Fork</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- Dynamic Search Controls -->
+    <div class="p-5 rounded-2xl bg-[var(--card,#1e293b)] border border-[var(--border,#334155)] shadow-sm space-y-4">
+      <div class="flex items-center justify-between">
+        <h2 class="text-sm font-bold text-[var(--foreground,#f8fafc)] flex items-center gap-2">
+          <span>Live Job Explorer</span>
+          <span class="text-[11px] font-normal text-[var(--muted-foreground,#94a3b8)]">(Search Instahyre & LinkedIn in real time)</span>
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-3">
+        <!-- Keywords -->
+        <div class="md:col-span-5">
+          <label class="block text-[11px] font-medium text-[var(--muted-foreground,#94a3b8)] mb-1">Role / Keywords</label>
+          <input type="text" id="search-query" value="Flutter" placeholder="e.g. Flutter, Mobile Engineer, Dart" class="w-full px-3.5 py-2 text-xs rounded-xl bg-slate-900 border border-[var(--border,#334155)] text-white focus:outline-none focus:border-blue-500">
+        </div>
+
+        <!-- Location -->
+        <div class="md:col-span-3">
+          <label class="block text-[11px] font-medium text-[var(--muted-foreground,#94a3b8)] mb-1">Location</label>
+          <select id="search-location" class="w-full px-3 py-2 text-xs rounded-xl bg-slate-900 border border-[var(--border,#334155)] text-white focus:outline-none focus:border-blue-500">
+            <option value="Bangalore" selected>Bangalore</option>
+            <option value="Remote">Remote</option>
+            <option value="Mumbai">Mumbai</option>
+            <option value="Gurgaon">Gurgaon / Delhi NCR</option>
+            <option value="Hyderabad">Hyderabad</option>
+            <option value="Pune">Pune</option>
+            <option value="India">All India</option>
+          </select>
+        </div>
+
+        <!-- Portal -->
+        <div class="md:col-span-2">
+          <label class="block text-[11px] font-medium text-[var(--muted-foreground,#94a3b8)] mb-1">Portal</label>
+          <select id="search-portal" class="w-full px-3 py-2 text-xs rounded-xl bg-slate-900 border border-[var(--border,#334155)] text-white focus:outline-none focus:border-blue-500">
+            <option value="instahyre" selected>Instahyre (API)</option>
+            <option value="linkedin">LinkedIn (Guest API)</option>
+            <option value="naukri">Naukri (Curated & Links)</option>
+            <option value="indeed">Indeed India (Curated)</option>
+          </select>
+        </div>
+
+        <!-- Search Button & Custom Add -->
+        <div class="md:col-span-2 flex items-end gap-2">
+          <button onclick="executeSearch()" id="btn-search" class="flex-1 py-2 px-3 text-xs font-semibold rounded-xl bg-blue-600 hover:bg-blue-500 text-white transition-all shadow-md flex items-center justify-center gap-1.5 h-[34px]">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+            <span>Search</span>
+          </button>
+          <button onclick="openPasteModal()" title="Paste any job from Naukri, Indeed, or email to instantly tailor PDFs" class="py-2 px-3 text-xs font-semibold rounded-xl bg-purple-600 hover:bg-purple-500 text-white transition-all shadow-md flex items-center justify-center gap-1 h-[34px]">
+            <span>+ Paste Job</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Quick Portal Deep Links & Bot Safety Info -->
+      <div class="pt-3 border-t border-[var(--border,#334155)] flex flex-wrap items-center justify-between gap-2 text-[11px]">
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="text-slate-400 font-medium">Quick Portals:</span>
+          <a href="https://www.naukri.com/flutter-developer-jobs-in-bangalore" target="_blank" class="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-sky-400 font-medium border border-slate-700 flex items-center gap-1">
+            <span>Naukri</span><span class="text-[10px]">↗</span>
+          </a>
+          <a href="https://in.indeed.com/jobs?q=Flutter+Developer&l=Bangalore" target="_blank" class="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-indigo-400 font-medium border border-slate-700 flex items-center gap-1">
+            <span>Indeed India</span><span class="text-[10px]">↗</span>
+          </a>
+          <a href="https://wellfound.com/jobs?role=flutter-developer" target="_blank" class="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-emerald-400 font-medium border border-slate-700 flex items-center gap-1">
+            <span>Wellfound</span><span class="text-[10px]">↗</span>
+          </a>
+          <a href="https://www.google.com/search?q=Flutter+developer+jobs+Bangalore&ibp=htl;jobs" target="_blank" class="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-amber-400 font-medium border border-slate-700 flex items-center gap-1">
+            <span>Google Jobs</span><span class="text-[10px]">↗</span>
+          </a>
+        </div>
+        <div class="text-[11px] text-slate-400">
+          <span class="text-emerald-400 font-semibold">● Bot Protection Safe:</span> Instant tailoring prevents account bans
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <div class="flex flex-wrap gap-2 border-b border-[var(--border,#334155)] pb-3">
+      <button onclick="switchTab('jobs')" id="tab-jobs" class="px-4 py-2 text-xs font-semibold rounded-lg bg-blue-600 text-white transition-all shadow-sm">
+        Discovered Opportunities (<span id="count-jobs">Loading...</span>)
+      </button>
+      <button onclick="switchTab('tracker')" id="tab-tracker" class="px-4 py-2 text-xs font-semibold rounded-lg bg-[var(--card,#1e293b)] text-[var(--muted-foreground,#94a3b8)] hover:text-white transition-all border border-[var(--border,#334155)]">
+        Application Tracker (<span id="count-tracker">...</span>)
+      </button>
+    </div>
+
+    <!-- TAB 1: Live Discovered Jobs -->
+    <div id="content-jobs" class="space-y-4">
+      <div id="loading-indicator" class="hidden py-12 text-center space-y-3">
+        <div class="w-8 h-8 border-2 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto"></div>
+        <p class="text-xs text-[var(--muted-foreground,#94a3b8)]">Querying live job feed and computing ATS fit scores...</p>
+      </div>
+
+      <div id="jobs-grid" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <!-- Injected dynamically via JavaScript -->
+      </div>
+    </div>
+
+    <!-- TAB 2: Tracker -->
+    <div id="content-tracker" class="hidden space-y-4">
+      <div class="flex items-center justify-between">
+        <div>
+          <h2 class="text-base font-bold text-[var(--foreground,#f8fafc)]">Application Tracker</h2>
+          <p class="text-xs text-[var(--muted-foreground,#94a3b8)]">Synced live with <code>job_search_tracker.csv</code></p>
+        </div>
+        <button onclick="loadTracker()" class="text-xs px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 font-medium">Refresh Tracker</button>
+      </div>
+
+      <div id="tracker-table-container" class="overflow-x-auto rounded-xl border border-[var(--border,#334155)] bg-[var(--card,#1e293b)]">
+        <table class="w-full text-left border-collapse text-xs">
+          <thead>
+            <tr class="border-b border-[var(--border,#334155)] bg-slate-800/40 text-[var(--muted-foreground,#94a3b8)]">
+              <th class="p-3">Company</th>
+              <th class="p-3">Role</th>
+              <th class="p-3">Channel</th>
+              <th class="p-3">Status</th>
+              <th class="p-3">Fit</th>
+              <th class="p-3">Generated CV</th>
+              <th class="p-3 text-right">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="tracker-rows" class="divide-y divide-[var(--border,#334155)] text-[var(--foreground,#f8fafc)]">
+            <!-- Dynamic rows -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Tailoring & Application Modal -->
+    <div id="modal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+      <div class="bg-[var(--card,#1e293b)] border border-[var(--border,#334155)] rounded-2xl max-w-2xl w-full max-h-[90vh] flex flex-col shadow-2xl overflow-hidden">
+        <div class="p-4 border-b border-[var(--border,#334155)] flex items-center justify-between">
+          <div>
+            <h3 id="modal-title" class="font-bold text-base text-[var(--foreground,#f8fafc)]">Tailored Application Pack</h3>
+            <p id="modal-subtitle" class="text-xs text-[var(--muted-foreground,#94a3b8)]">Compiling PDFs...</p>
+          </div>
+          <button onclick="closeModal()" class="w-8 h-8 rounded-lg bg-slate-800 text-slate-300 hover:text-white flex items-center justify-center">✕</button>
+        </div>
+        
+        <div class="p-5 overflow-y-auto space-y-4 custom-scrollbar text-xs">
+          <!-- Download Buttons -->
+          <div>
+            <h4 class="font-bold text-blue-400 uppercase tracking-wider text-[11px] mb-2">Compiled Documents (Ready to Drag & Drop)</h4>
+            <div class="grid grid-cols-2 gap-3">
+              <div class="p-3 rounded-xl bg-slate-800/60 border border-slate-700 flex flex-col justify-between">
+                <div>
+                  <p class="font-semibold text-white">Tailored CV (PDF)</p>
+                  <span class="inline-block text-[11px] text-emerald-400 font-medium mt-0.5">✓ Compiled (2 Pages)</span>
+                </div>
+                <a id="modal-cv-btn" href="#" download class="mt-3 py-1.5 px-3 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-center flex items-center justify-center gap-1.5 shadow-sm">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                  <span>Download CV</span>
+                </a>
+              </div>
+              <div class="p-3 rounded-xl bg-slate-800/60 border border-slate-700 flex flex-col justify-between">
+                <div>
+                  <p class="font-semibold text-white">Cover Letter (PDF)</p>
+                  <span class="inline-block text-[11px] text-emerald-400 font-medium mt-0.5">✓ Compiled (1 Page)</span>
+                </div>
+                <a id="modal-cl-btn" href="#" download class="mt-3 py-1.5 px-3 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-semibold text-center flex items-center justify-center gap-1.5 shadow-sm">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                  <span>Download Letter</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Form Answers Section -->
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <h4 class="font-bold text-blue-400 uppercase tracking-wider text-[11px]">Pre-drafted Portal Form Answer</h4>
+              <button onclick="copyFormAnswer()" class="text-xs px-2.5 py-1 rounded bg-blue-600 hover:bg-blue-500 text-white font-medium flex items-center gap-1 transition-all">
+                <span id="copy-btn-text">Copy Text</span>
+              </button>
+            </div>
+            <div class="p-3.5 rounded-xl bg-slate-900 border border-slate-800 font-mono text-[11px] leading-relaxed text-slate-300" id="modal-form-text">
+              ...
+            </div>
+          </div>
+        </div>
+
+        <div class="p-4 border-t border-[var(--border,#334155)] bg-slate-900/40 flex justify-between items-center">
+          <p class="text-[11px] text-[var(--muted-foreground,#94a3b8)]">Saved to <code>job_search_tracker.csv</code></p>
+          <div class="flex gap-2">
+            <button onclick="closeModal()" class="px-4 py-2 text-xs font-medium text-[var(--muted-foreground,#94a3b8)] hover:text-white">Close</button>
+            <a id="modal-job-link" href="#" target="_blank" class="px-4 py-2 text-xs font-semibold rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white transition-all shadow-sm">
+              Open Job on Portal ↗
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Paste Job Modal (Naukri, Indeed, or Any Portal) -->
+    <div id="paste-modal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+      <div class="bg-[var(--card,#1e293b)] border border-[var(--border,#334155)] rounded-2xl max-w-xl w-full flex flex-col shadow-2xl overflow-hidden">
+        <div class="p-4 border-b border-[var(--border,#334155)] flex items-center justify-between">
+          <div>
+            <h3 class="font-bold text-base text-[var(--foreground,#f8fafc)]">Paste Any Job (Naukri, Indeed, Wellfound, Email)</h3>
+            <p class="text-xs text-[var(--muted-foreground,#94a3b8)]">Automatically tailors Ritik's 2-page CV & Cover Letter</p>
+          </div>
+          <button onclick="closePasteModal()" class="w-8 h-8 rounded-lg bg-slate-800 text-slate-300 hover:text-white flex items-center justify-center">✕</button>
+        </div>
+        
+        <div class="p-5 space-y-3 text-xs">
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block text-[11px] font-medium text-slate-300 mb-1">Company Name</label>
+              <input type="text" id="paste-company" placeholder="e.g. Swiggy, Zepto, CRED" class="w-full px-3 py-2 text-xs rounded-xl bg-slate-900 border border-slate-700 text-white focus:outline-none focus:border-purple-500">
+            </div>
+            <div>
+              <label class="block text-[11px] font-medium text-slate-300 mb-1">Role Title</label>
+              <input type="text" id="paste-role" value="Flutter Developer" placeholder="e.g. Flutter Developer" class="w-full px-3 py-2 text-xs rounded-xl bg-slate-900 border border-slate-700 text-white focus:outline-none focus:border-purple-500">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block text-[11px] font-medium text-slate-300 mb-1">Location</label>
+              <input type="text" id="paste-location" value="Bangalore" placeholder="e.g. Bangalore / Remote" class="w-full px-3 py-2 text-xs rounded-xl bg-slate-900 border border-slate-700 text-white focus:outline-none focus:border-purple-500">
+            </div>
+            <div>
+              <label class="block text-[11px] font-medium text-slate-300 mb-1">Job Link / Portal URL</label>
+              <input type="text" id="paste-url" placeholder="https://www.naukri.com/..." class="w-full px-3 py-2 text-xs rounded-xl bg-slate-900 border border-slate-700 text-white focus:outline-none focus:border-purple-500">
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-[11px] font-medium text-slate-300 mb-1">Keywords or JD Excerpt</label>
+            <textarea id="paste-keywords" rows="3" placeholder="Paste job requirements or keywords (e.g. Clean Architecture, BLoC, Riverpod, Hive, Offline storage, Razorpay)" class="w-full px-3 py-2 text-xs rounded-xl bg-slate-900 border border-slate-700 text-white focus:outline-none focus:border-purple-500"></textarea>
+          </div>
+        </div>
+
+        <div class="p-4 border-t border-[var(--border,#334155)] bg-slate-900/40 flex justify-end gap-2">
+          <button onclick="closePasteModal()" class="px-4 py-2 text-xs font-medium text-slate-400 hover:text-white">Cancel</button>
+          <button onclick="submitPastedJob()" id="btn-submit-paste" class="px-4 py-2 text-xs font-semibold rounded-lg bg-purple-600 hover:bg-purple-500 text-white transition-all shadow-md flex items-center gap-1.5">
+            <span>Generate Application Pack</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    let activeJobs = [];
+    let currentModalText = "";
+
+    function switchTab(tab) {
+      ['jobs', 'tracker'].forEach(t => {
+        const btn = document.getElementById('tab-' + t);
+        const content = document.getElementById('content-' + t);
+        if (t === tab) {
+          btn.className = "px-4 py-2 text-xs font-semibold rounded-lg bg-blue-600 text-white transition-all shadow-sm";
+          content.classList.remove('hidden');
+        } else {
+          btn.className = "px-4 py-2 text-xs font-semibold rounded-lg bg-[var(--card,#1e293b)] text-[var(--muted-foreground,#94a3b8)] hover:text-white transition-all border border-[var(--border,#334155)]";
+          content.classList.add('hidden');
+        }
+      });
+      if (tab === 'tracker') loadTracker();
+    }
+
+    async function executeSearch() {
+      const q = document.getElementById('search-query').value.trim() || 'Flutter';
+      const loc = document.getElementById('search-location').value;
+      const portal = document.getElementById('search-portal').value;
+
+      document.getElementById('loading-indicator').classList.remove('hidden');
+      document.getElementById('jobs-grid').innerHTML = '';
+
+      try {
+        const res = await fetch(`/api/search?query=${encodeURIComponent(q)}&location=${encodeURIComponent(loc)}&portal=${portal}&limit=12`);
+        const data = await res.json();
+        document.getElementById('loading-indicator').classList.add('hidden');
+
+        if (data.status === 'success') {
+          activeJobs = data.results || [];
+          document.getElementById('count-jobs').textContent = activeJobs.length;
+          renderJobCards(activeJobs);
+        } else {
+          document.getElementById('jobs-grid').innerHTML = `<p class="col-span-3 text-rose-400 text-center py-8">Search error: ${data.message}</p>`;
+        }
+      } catch (err) {
+        document.getElementById('loading-indicator').classList.add('hidden');
+        document.getElementById('jobs-grid').innerHTML = `<p class="col-span-3 text-rose-400 text-center py-8">Failed to connect to search API. Make sure <code>python tools/serve_dashboard.py</code> is running.</p>`;
+      }
+    }
+
+    function renderJobCards(jobs) {
+      const grid = document.getElementById('jobs-grid');
+      if (jobs.length === 0) {
+        grid.innerHTML = '<p class="col-span-3 text-center py-10 text-[var(--muted-foreground,#94a3b8)]">No jobs found matching your criteria.</p>';
+        return;
+      }
+
+      grid.innerHTML = jobs.map((job, idx) => {
+        const scoreColor = job.fit_score >= 90 ? 'text-emerald-400 bg-emerald-500/10 border-emerald-500/20' : 'text-blue-400 bg-blue-500/10 border-blue-500/20';
+        const keywordsHtml = (job.keywords || []).slice(0, 4).map(kw => `<span class="text-[11px] px-2 py-0.5 rounded bg-slate-800 text-slate-300">${kw}</span>`).join('');
+
+        return `
+          <div class="p-5 rounded-2xl bg-[var(--card,#1e293b)] border border-[var(--border,#334155)] hover:border-blue-500/40 transition-all flex flex-col justify-between space-y-4 shadow-sm">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-xs font-semibold px-2 py-0.5 rounded-full border ${scoreColor}">${job.fit_score}% Fit</span>
+                <span class="text-xs text-[var(--muted-foreground,#94a3b8)] truncate max-w-[140px]">${job.location || 'India'}</span>
+              </div>
+              <h3 class="text-base font-bold text-[var(--foreground,#f8fafc)] truncate">${job.company}</h3>
+              <p class="text-xs text-blue-300 font-medium mb-2 truncate">${job.title}</p>
+            </div>
+            <div class="space-y-3 pt-2 border-t border-[var(--border,#334155)]">
+              <div class="flex flex-wrap gap-1.5">${keywordsHtml}</div>
+              <button onclick="tailorForJob(${idx})" id="btn-tailor-${idx}" class="w-full py-2 px-3 text-xs font-semibold rounded-lg bg-blue-600 hover:bg-blue-500 text-white transition-all flex items-center justify-center gap-1.5 shadow-sm">
+                <span>Tailor Application (PDF)</span>
+              </button>
+              <a href="${job.url}" target="_blank" class="block text-center w-full py-1 text-xs font-medium text-[var(--muted-foreground,#94a3b8)] hover:text-white transition-all">
+                View on Portal ↗
+              </a>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    async function tailorForJob(idx) {
+      const job = activeJobs[idx];
+      const btn = document.getElementById(`btn-tailor-${idx}`);
+      const originalText = btn.innerHTML;
+      btn.innerHTML = `<span class="animate-pulse">Compiling LaTeX to PDF...</span>`;
+      btn.disabled = true;
+
+      try {
+        const res = await fetch('/api/apply', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(job)
+        });
+        const data = await res.json();
+        btn.innerHTML = originalText;
+        btn.disabled = false;
+
+        if (data.status === 'success') {
+          openGeneratedModal(data, job);
+        } else {
+          alert('Error compiling document: ' + data.message);
+        }
+      } catch (err) {
+        btn.innerHTML = originalText;
+        btn.disabled = false;
+        alert('Network error communicating with server.');
+      }
+    }
+
+    function openGeneratedModal(data, job) {
+      document.getElementById('modal-title').textContent = `${data.company} Application Pack`;
+      document.getElementById('modal-subtitle').textContent = `Role: ${job.title} · ${data.fit_score}% Fit`;
+      
+      const cvBtn = document.getElementById('modal-cv-btn');
+      cvBtn.href = data.cv_url;
+      cvBtn.download = `Ritik_Kumar_CV_${job.company.replace(/\\s+/g, '_')}.pdf`;
+
+      const clBtn = document.getElementById('modal-cl-btn');
+      clBtn.href = data.cl_url;
+      clBtn.download = `Ritik_Kumar_Cover_Letter_${job.company.replace(/\\s+/g, '_')}.pdf`;
+
+      document.getElementById('modal-job-link').href = job.url;
+      document.getElementById('modal-form-text').textContent = data.form_answer;
+      currentModalText = data.form_answer;
+
+      document.getElementById('modal').classList.remove('hidden');
+    }
+
+    function closeModal() {
+      document.getElementById('modal').classList.add('hidden');
+    }
+
+    function openPasteModal() {
+      document.getElementById('paste-modal').classList.remove('hidden');
+    }
+
+    function closePasteModal() {
+      document.getElementById('paste-modal').classList.add('hidden');
+    }
+
+    async function submitPastedJob() {
+      const company = document.getElementById('paste-company').value.trim();
+      const role = document.getElementById('paste-role').value.trim() || 'Flutter Developer';
+      const location = document.getElementById('paste-location').value.trim() || 'Bangalore';
+      const url = document.getElementById('paste-url').value.trim() || 'https://www.naukri.com';
+      const rawKeywords = document.getElementById('paste-keywords').value.trim();
+
+      if (!company) {
+        alert('Please enter a company name (e.g. Swiggy, Zepto, CRED)');
+        return;
+      }
+
+      const keywords = rawKeywords 
+        ? rawKeywords.split(/[,;\n]+/).map(s => s.trim()).filter(Boolean)
+        : ["Flutter", "Dart", "Clean Architecture", "BLoC"];
+
+      const jobObj = {
+        company: company,
+        title: role,
+        location: location,
+        url: url,
+        keywords: keywords
+      };
+
+      const btn = document.getElementById('btn-submit-paste');
+      btn.innerHTML = `<span>Compiling PDFs...</span>`;
+      btn.disabled = true;
+
+      try {
+        const res = await fetch('/api/apply', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(jobObj)
+        });
+        const data = await res.json();
+        btn.innerHTML = `<span>Generate Application Pack</span>`;
+        btn.disabled = false;
+
+        if (data.status === 'success') {
+          closePasteModal();
+          openGeneratedModal(data, jobObj);
+          loadTracker();
+        } else {
+          alert('Compilation error: ' + data.message);
+        }
+      } catch (err) {
+        btn.innerHTML = `<span>Generate Application Pack</span>`;
+        btn.disabled = false;
+        alert('Network error connecting to backend.');
+      }
+    }
+
+    function copyFormAnswer() {
+      navigator.clipboard.writeText(currentModalText).then(() => {
+        const btnText = document.getElementById('copy-btn-text');
+        btnText.textContent = "Copied! ✓";
+        setTimeout(() => { btnText.textContent = "Copy Text"; }, 2000);
+      });
+    }
+
+    async function loadTracker() {
+      try {
+        const res = await fetch('/api/tracker');
+        const data = await res.json();
+        if (data.status === 'success') {
+          const items = data.items || [];
+          document.getElementById('count-tracker').textContent = items.length;
+          const tbody = document.getElementById('tracker-rows');
+          if (items.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="7" class="p-4 text-center text-slate-400">No applications tracked yet.</td></tr>';
+            return;
+          }
+          tbody.innerHTML = items.map(item => `
+            <tr>
+              <td class="p-3 font-semibold">${item.company}</td>
+              <td class="p-3 text-blue-400">${item.role}</td>
+              <td class="p-3">${item.channel || 'Portal'}</td>
+              <td class="p-3">
+                <span class="px-2.5 py-0.5 rounded-full text-[11px] font-medium ${item.status === 'applied' ? 'bg-emerald-500/20 text-emerald-400' : 'bg-blue-500/20 text-blue-400'}">
+                  ${item.status}
+                </span>
+              </td>
+              <td class="p-3 font-bold text-emerald-400">${item.fit_rating || '5'}★</td>
+              <td class="p-3 font-mono text-[11px] text-slate-300">
+                <a href="/${item.cv_file}" download class="text-blue-400 hover:underline">Download PDF ↗</a>
+              </td>
+              <td class="p-3 text-right">
+                ${item.status !== 'applied' ? `<button onclick="markApplied('${item.company}')" class="px-2.5 py-1 text-[11px] rounded bg-emerald-600 hover:bg-emerald-500 text-white font-medium">Mark as Applied</button>` : '<span class="text-slate-400 text-[11px]">Submitted</span>'}
+              </td>
+            </tr>
+          `).join('');
+        }
+      } catch (err) {
+        console.error(err);
+      }
+    }
+
+    async function markApplied(company) {
+      await fetch('/api/tracker/update', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ company, status: 'applied' })
+      });
+      loadTracker();
+    }
+
+    // Run initial search on load
+    window.onload = () => {
+      executeSearch();
+      loadTracker();
+    };
+  </script>
+</body>
+</html>
