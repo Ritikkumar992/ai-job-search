@@ -1,0 +1,14 @@
+{
+  "name": "instahyre-cli",
+  "version": "1.0.0",
+  "description": "CLI for searching tech jobs in India on Instahyre",
+  "type": "module",
+  "scripts": {
+    "start": "bun run src/cli.ts",
+    "test": "bun test"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.2.0",
+    "typescript": "^5.7.0"
+  }
+}
