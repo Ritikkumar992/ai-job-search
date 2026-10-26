@@ -1,62 +1,36 @@
-%% Example CV - [YOUR_NAME]
-%% Comprehensive overview of all competencies, experience, and achievements.
-%% Use as a master reference when tailoring role-specific CVs.
-%%
-%% SETUP: Run /setup to populate this with your actual information.
+%% Master CV - Ritik Kumar
+%% Comprehensive reference CV tailored for Mobile & Flutter Engineering roles.
 %% Compile with: lualatex main_example.tex
-%% (pdflatex often fails on modern MiKTeX with fontawesome5 font-expansion errors.)
 
 \documentclass[11pt,a4paper,sans]{moderncv}
 \moderncvstyle{banking}
 \moderncvcolor{blue}
 
-% Force the name and section headings to render in moderncv blue (color1).
-% Default banking leaves them black: moderncvstylebanking.sty's \colorlet
-% copies (not aliases) the pre-scheme accent colour, so the name colours are
-% frozen before \moderncvcolor runs. Re-let them after. \namefont is the hook
-% every name-style macro routes through, so this also works on moderncv 2.3.1
-% (Debian/Ubuntu apt), which has no \firstnamestyle/\lastnamestyle at all.
-\renewcommand*{\namefont}{\fontsize{34}{36}\bfseries\upshape}
+\renewcommand*{\namefont}{\fontsize{32}{34}\bfseries\upshape}
 \colorlet{firstnamecolor}{color1}
 \colorlet{lastnamecolor}{color1}
 \colorlet{namecolor}{color1}
 \renewcommand*{\sectionstyle}[1]{{\sectionfont\color{color1}#1}}
 
 \usepackage[utf8]{inputenc}
-% pdflatex fallback only (the documented engine is lualatex, which skips this
-% branch). Without T1 font encoding pdflatex builds accented letters with
-% \accent, and the PDF text layer stores them decomposed - `e` + U+0300 rather
-% than U+00E8 - so an ATS keyword match on "Genève" fails while the page looks
-% right. moderncv 2.5 loads T1 itself under pdflatex; 2.3.1 (Debian/Ubuntu apt)
-% does not. \ifpdftex comes from iftex, which every moderncv version loads.
 \ifpdftex\usepackage[T1]{fontenc}\fi
-% moderncv loads hyperref itself in an \AtEndPreamble hook, so \hypersetup
-% must go in an \AtEndPreamble of our own: on moderncv < 2.4 a top-level
-% \usepackage{hyperref} clashes with the class's own
-% \RequirePackage[unicode]{hyperref}. From 2.4.0 the class passes its options
-% through \PassOptionsToPackage instead, which is what removes that clash.
 \AtEndPreamble{\hypersetup{
     colorlinks=true,
     linkcolor=blue,
     filecolor=magenta,
     urlcolor=blue,
-    pdftitle={[YOUR_NAME] - CV},
-    % Keep pdfpagemode=UseNone: this block runs after moderncv's own
-    % \AtEndPreamble (moderncv.cls sets pdfpagemode there), so a FullScreen
-    % value here would win and open every CV in fullscreen presentation mode.
+    pdftitle={Ritik Kumar - CV},
     pdfpagemode=UseNone,
 }}
-\usepackage[scale=0.80]{geometry}
+\usepackage[scale=0.82]{geometry}
 \usepackage{import}
 
 % personal data
-\name{[First]}{[Last]}
-% If you have no address to list, DELETE this whole line. \address{}{}{} fails
-% with "There's no line here to end" on every moderncv version.
-\address{[Your Address, City, Country]}{}{}
-\phone[mobile]{[+XX XXXXXXXXXX]}
-\email{[your.email@example.com]}
-\extrainfo{\href{[https://linkedin.com/in/your-profile]}{LinkedIn}, \href{[https://github.com/your-username]}{GitHub}}
+\name{Ritik}{Kumar}
+\address{Kolkata, India}{}{}
+\phone[mobile]{+91-9693882391}
+\email{ritik.myworkmail@gmail.com}
+\extrainfo{\href{https://linkedin.com/in/ritikkumar992}{LinkedIn: ritikkumar992} \,|\, \href{https://github.com/Ritikkumar992}{GitHub: Ritikkumar992}}
 
 \begin{document}
 
@@ -66,8 +40,8 @@
 %     PROFILE STATEMENT
 % ============================================================
 
-\vspace{6pt}
-\small{[Write a 3-5 line profile statement tailored to the role you're applying for. Focus on what makes you uniquely qualified. Example: "Data scientist with a PhD in [field] and X years of industry experience. Combines deep domain expertise in [domain] with strong applied machine learning and Python development skills. Experienced in developing end-to-end ML pipelines, from data ingestion to stakeholder-facing dashboards."]}
+\vspace{-10pt}
+\small{Flutter Developer with 2+ years of hands-on experience architecting and shipping production-grade cross-platform applications for Android and iOS. Proficient in Clean Architecture, BLoC/Cubit, Provider, RESTful API integration, and full-stack delivery across Flutter, .NET Framework, and SQL Server. Experienced in end-to-end Play Store releases, CI/CD automation, same-day production hotfixes, and SOLID design principles. Backed by a strong foundation in Data Structures and Algorithms with over 800+ solved problems on LeetCode.}
 
 % ============================================================
 %     CORE COMPETENCIES
@@ -76,17 +50,11 @@
 \section{Core Competencies}
 \vspace{1pt}
 \begin{itemize}
-
-\item \textbf{[Skill Category 1]}: [Specific skills, frameworks, tools. Be concrete.]
-
-\item \textbf{[Skill Category 2]}: [Specific skills, frameworks, tools.]
-
-\item \textbf{[Skill Category 3]}: [Specific skills, frameworks, tools.]
-
-\item \textbf{[Skill Category 4]}: [Domain expertise, methods, approaches.]
-
-\item \textbf{[Skill Category 5]}: [Tools, platforms, software.]
-
+\item \textbf{Mobile Development}: Flutter, Dart, Kotlin, Java, Coroutines \& Flow, Android SDK, Gradle, iOS Deployment.
+\item \textbf{Architecture \& State}: Clean Architecture, MVVM, SOLID Principles, BLoC/Cubit, Provider, Riverpod, GetIt (DI).
+\item \textbf{Backend \& Data Layer}: RESTful APIs, Retrofit, .NET Framework, Microsoft SQL Server, Supabase, Firebase, Hive.
+\item \textbf{Lifecycle \& Integrations}: Google Play Console, TestFlight, CI/CD Pipelines, Razorpay SDK, e-Way Bill \& GST Sync.
+\item \textbf{Problem Solving}: Data Structures \& Algorithms, AIR 3266 in TCS CodeVita, 800+ LeetCode, 500+ Codeforces.
 \end{itemize}
 
 % ============================================================
@@ -97,33 +65,66 @@
 \vspace{3pt}
 \begin{itemize}
 
-% --- Most Recent Role ---
-\item{\cventry{[YYYY-Present]}{[Job Title]}{[Company]}{[City, Country]}{}{\vspace{1pt}
+% --- Skyking Courier ---
+\item{\cventry{05/2024 -- Present}{Mobile Developer}{Skyking Courier}{Kolkata, India}{}{\vspace{1pt}
 \begin{itemize}
-    \item {[Achievement or responsibility 1 - be specific, use numbers where possible]}
-    \item {[Achievement or responsibility 2]}
-    \item {[Achievement or responsibility 3]}
-    \item {[Achievement or responsibility 4]}
+    \item {Lead two production Flutter applications end-to-end spanning system architecture, QA, releases, and live incident response.}
+    \item {Shipped 20+ releases in 12 months with a same-day hotfix pipeline, maintaining 99\%+ crash-free app stability across both apps.}
+    \item {Applied Clean Architecture and MVVM with modular design; utilized GetIt for dependency injection and Repository Pattern for clean data layer separation.}
+    \item {Optimized app performance targeting ANR reduction and memory caching; built a live exception dashboard for real-time crash triage.}
+    \item {Managed full Android \& iOS release lifecycle, including APK/AAB builds, Play Store tracks, App Store provisioning, certificates, and TestFlight.}
+    \item {Architected e-Way Bill integration with GST portal sync, CNote linking, multi-branch inventory across 1,800+ branches, real-time parcel tracking, and Razorpay payment gateway.}
 \end{itemize}}}
 
 \vspace{3pt}
 
-% --- Previous Role ---
-\item{\cventry{[YYYY-YYYY]}{[Job Title]}{[Company]}{[City, Country]}{}{\vspace{1pt}
+% --- Promact Info Tech ---
+\item{\cventry{01/2024 -- 04/2024}{Mobile Developer Intern}{Promact Info Tech}{Vadodara, India}{}{\vspace{1pt}
 \begin{itemize}
-    \item {[Achievement or responsibility 1]}
-    \item {[Achievement or responsibility 2]}
-    \item {[Achievement or responsibility 3]}
+    \item {Developed and tested mobile applications using Flutter, Java, and Kotlin.}
+    \item {Worked alongside senior engineers to profile, debug, and optimize application performance, directly boosting UX benchmarks.}
 \end{itemize}}}
 
 \vspace{3pt}
 
-% --- Earlier Role ---
-\item{\cventry{[YYYY-YYYY]}{[Job Title]}{[Company]}{[City, Country]}{}{\vspace{1pt}
+% --- ActibeWeb ---
+\item{\cventry{08/2022 -- 11/2022}{Front-End Web Developer Intern}{ActibeWeb}{Remote}{}{\vspace{1pt}
 \begin{itemize}
-    \item {[Achievement or responsibility 1]}
-    \item {[Achievement or responsibility 2]}
+    \item {Developed responsive web interfaces using HTML, CSS, JavaScript, and Bootstrap for multiple enterprise clients.}
+    \item {Ensured cross-browser compatibility and delivered client feature requests on schedule.}
 \end{itemize}}}
+
+\end{itemize}
+
+% ============================================================
+%     KEY PROJECTS
+% ============================================================
+
+\section{Key Projects}
+\vspace{1pt}
+\begin{itemize}
+
+\item{\textbf{Point of Sale \& Logistics Management System (Flutter, .NET, SQL Server, Hive)}}
+\begin{itemize}
+    \item {Delivered a live cross-platform POS app in Flutter serving 500+ daily active users and processing 20,000+ shipment bookings per day across multiple courier branches.}
+    \item {Engineered with Clean Architecture, Provider state management, Repository Pattern, and Hive for offline-first resilience.}
+    \item {Designed relational SQL Server schema handling 20,000+ daily transactions across Cash, Due, and Credit billing modes with automated freight + GST calculations.}
+\end{itemize}
+
+\vspace{2pt}
+
+\item{\textbf{Blog App (Flutter, Clean Architecture, BLoC/Cubit, Supabase)}}
+\begin{itemize}
+    \item {Built with Clean Architecture and BLoC/Cubit for unidirectional data flow; used FP Dart for functional error handling and GetIt for DI.}
+    \item {Integrated Supabase for auth, session management, and real-time database operations via structured repository abstractions.}
+\end{itemize}
+
+\vspace{2pt}
+
+\item{\textbf{Weather App (Flutter, REST API, Geolocator)}}
+\begin{itemize}
+    \item {Integrated OpenWeather REST API using FutureBuilder and async/await with runtime GPS permission handling across Android \& iOS.}
+\end{itemize}
 
 \end{itemize}
 
@@ -135,16 +136,30 @@
 \vspace{1pt}
 \begin{itemize}
 
-\item{\cventry{[YYYY-YYYY]}{[Degree] in [Field]}{[Institution]}{[City, Country]}{}{\vspace{1pt}
-Thesis: ``[Thesis Title].'' [Brief description of research focus.]
+\item{\cventry{2020 -- 2024}{B-Tech in Computer Science and Engineering (GPA: 8.7 / 10)}{Budge Budge Institute of Technology (MAKAUT)}{Kolkata, India}{}{\vspace{1pt}
+Core Coursework: Data Structures \& Algorithms, DBMS, Object-Oriented Programming, Operating Systems, Computer Networks.
 }}
 
-\vspace{3pt}
+\vspace{2pt}
 
-\item{\cventry{[YYYY-YYYY]}{[Degree] in [Field]}{[Institution]}{[City, Country]}{}{\vspace{1pt}
-[Brief description or key topics.]
-}}
+\item{\cventry{2019 -- 2020}{Class XII -- CBSE (GPA: 8.5 / 10)}{Jawahar Navodaya Vidyalaya}{India}{}{}}
 
+\vspace{1pt}
+
+\item{\cventry{2017 -- 2018}{Class X -- CBSE (GPA: 9.5 / 10)}{DAV Public School}{India}{}{}}
+
+\end{itemize}
+
+% ============================================================
+%     HONORS AND AWARDS
+% ============================================================
+
+\section{Honors and Achievements}
+\vspace{1pt}
+\begin{itemize}
+\item{\textbf{AIR 3266} in TCS CodeVita Season 10.}
+\item{\textbf{99.23\%ile} in TCS NQT 2023.}
+\item{\textbf{800+ Problems Solved} on LeetCode | \textbf{500+ Problems Solved} on Codeforces.}
 \end{itemize}
 
 % ============================================================
@@ -154,37 +169,7 @@ Thesis: ``[Thesis Title].'' [Brief description of research focus.]
 \section{Languages}
 \vspace{1pt}
 \begin{itemize}
-\item {[Language 1] (native), [Language 2] (fluent), [Language 3] (intermediate).}
-\end{itemize}
-
-% ============================================================
-%     PUBLICATIONS (optional)
-% ============================================================
-
-\section{Publications}
-\vspace{1pt}
-\begin{itemize}
-\item {[Author(s)] ([Year]). [Title]. [Journal/Conference]. \href{[DOI_URL]}{DOI link}}
-\end{itemize}
-
-% ============================================================
-%     HONORS AND AWARDS (optional)
-% ============================================================
-
-\section{Honors and Awards}
-\vspace{1pt}
-\begin{itemize}
-\item{\textbf{[Award Name]} -- [Event/Organization] ([Year]).}
-\end{itemize}
-
-% ============================================================
-%     REFERENCES
-% ============================================================
-
-\section{References}
-\vspace{1pt}
-\begin{itemize}
-\item{Available upon request.}
+\item{English (Professional working proficiency), Hindi (Native).}
 \end{itemize}
 
 \end{document}

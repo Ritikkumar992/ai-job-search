@@ -2,112 +2,52 @@
 framework_version: 1.0.0
 ---
 
-# Interview Preparation Guide
-
-<!-- SETUP: STAR examples are personalized by running /setup based on your actual experience -->
+# Interview Preparation Guide for Ritik Kumar
 
 ## STAR Format
-
 Structure answers as: **Situation** (context), **Task** (your responsibility), **Action** (what you did), **Result** (outcome).
-
-Keep answers to 1-2 minutes. Be specific. End with what you learned or would do differently.
+Keep answers to 1-2 minutes. Be specific with metrics.
 
 ## Ready-Made STAR Examples
 
-<!-- These are populated by /setup from your actual experience. Below are templates showing the format. -->
+### 1. High-Volume Logistics POS App & Real-Time Sync (Clean Architecture & Performance)
+**S:** Skyking needed a reliable mobile POS system across 1,800+ courier branches processing 20,000+ bookings daily in varied connectivity conditions.
+**T:** Architect and deliver a robust Flutter app with offline resilience, complex GST/freight calculation, and seamless SQL Server / .NET API integration.
+**A:** Implemented Clean Architecture with Provider state management and Hive local storage. Separated domain use cases from data repositories. Designed optimized SQL queries and built efficient .NET REST APIs consumed via Retrofit. Added instant calculations for single and bulk consignments.
+**R:** App deployed across 1,800+ branches serving 500+ DAU and handling 20,000+ daily transactions seamlessly with zero data corruption.
+**Use for:** "Tell me about a complex project you architected", "How do you handle offline sync and data persistence in Flutter?"
 
-### 1. [PROJECT_NAME] ([SKILL_DEMONSTRATED])
-**S:** [CONTEXT - what was happening, what was the problem]
-**T:** [YOUR RESPONSIBILITY - what you specifically needed to do]
-**A:** [WHAT YOU DID - specific actions, tools, methods]
-**R:** [OUTCOME - measurable results, adoption, impact]
-**Use for:** "[QUESTION_TYPE_1]", "[QUESTION_TYPE_2]"
+### 2. Live Crash Resolution & 99%+ Stability (Production Operations & Incident Response)
+**S:** Multiple app releases encountered occasional ANRs and uncaught exceptions across diverse low-end Android handsets in real-world delivery environments.
+**T:** Maintain high app reliability, reduce ANR rates, and ensure same-day resolution of critical production bugs.
+**A:** Built a real-time exception monitoring and crash triage dashboard. Profiled memory consumption and replaced memory-heavy state objects with lightweight caching. Created a streamlined release and hotfix pipeline for immediate Play Store deployment.
+**R:** Maintained 99%+ crash-free session rate across 20+ production releases, cutting ANR rates significantly.
+**Use for:** "How do you debug production issues?", "Tell me about a time you optimized application performance."
 
-### 2. [PROJECT_NAME] ([SKILL_DEMONSTRATED])
-**S:** [CONTEXT]
-**T:** [YOUR RESPONSIBILITY]
-**A:** [WHAT YOU DID]
-**R:** [OUTCOME]
-**Use for:** "[QUESTION_TYPE_1]", "[QUESTION_TYPE_2]"
+### 3. End-to-End Release Automation & Store Management (CI/CD & DevOps)
+**S:** Manual deployment and certification provisioning for both Android and iOS builds was time-consuming and error-prone.
+**T:** Take complete ownership of the release pipeline from code commit to store availability.
+**A:** Configured automated Gradle build flavors, Play Store internal/production tracks, App Store certificates, provisioning profiles, and TestFlight distribution.
+**R:** Enabled continuous delivery allowing over 20 releases shipped within a 12-month period with reliable same-day patch capability.
+**Use for:** "Describe your experience with Play Store / App Store release processes and CI/CD."
 
-### 3. [PROJECT_NAME] ([SKILL_DEMONSTRATED])
-**S:** [CONTEXT]
-**T:** [YOUR RESPONSIBILITY]
-**A:** [WHAT YOU DID]
-**R:** [OUTCOME]
-**Use for:** "[QUESTION_TYPE_1]", "[QUESTION_TYPE_2]"
-
-<!-- Add more STAR examples as needed. Aim for 4-6 covering different competencies. -->
+### 4. Algorithmic Problem Solving & System Logic (Rigor & Efficiency)
+**S:** Required fast execution and zero-glitch UI responsiveness during complex nested state operations and real-time package calculations.
+**T:** Leverage strong algorithmic foundation to ensure clean data models, minimal re-renders, and rapid computation.
+**A:** Applied principles refined from solving 800+ LeetCode and 500+ Codeforces problems (AIR 3266 in TCS CodeVita) to optimize search lookups, caching tables, and async stream management.
+**R:** Ensured 60fps UI performance even when managing complex multi-item invoices and large consignment lists.
+**Use for:** "How does your competitive programming background benefit day-to-day software development?"
 
 ## Common Tough Questions
 
-### "Why did you leave [previous company]?"
-> [PREPARE YOUR ANSWER - be honest, forward-looking, no negativity about former employer]
+### "Why are you looking for a new role?"
+> "At Skyking, I've had the opportunity to own two production Flutter apps end-to-end—from architecture to deploying 20+ releases and maintaining 99%+ stability for thousands of daily users. Now that the core systems are mature and running smoothly, I'm eager to take on larger-scale challenges, collaborate with a bigger engineering team, and contribute to high-impact products where I can deepen my expertise in mobile architecture and modern engineering best practices."
 
-### "You don't have [specific skill/experience]."
-> [PREPARE YOUR ANSWER - acknowledge the gap, bridge to adjacent experience, show willingness to learn]
+### "You have ~2 years of experience; can you handle senior-level responsibilities?"
+> "While my total professional tenure is 2+ years, the depth of responsibility I've held has been that of a lead mobile engineer. I have architected production Flutter apps from scratch, managed the complete App Store & Play Store lifecycle, set up CI/CD, integrated hardware/billing workflows across 1,800+ branches, and maintained 99%+ stability. Additionally, my problem-solving foundation is backed by 800+ LeetCode problems and competitive coding achievements. I bring proven velocity, ownership, and architecture rigor."
 
-### "Where do you see yourself in 5 years?"
-> [PREPARE YOUR ANSWER - show ambition aligned with the role's growth path]
+### "Where do you see yourself in 3-5 years?"
+> "I see myself growing into a Senior Mobile Architect / Engineering Lead, driving core mobile architecture, mentoring junior developers, and setting engineering standards across cross-platform mobile systems."
 
-### "What's your biggest weakness?"
-> [PREPARE YOUR ANSWER - genuine weakness with concrete mitigation strategy]
-
-### "Why this company specifically?"
-> Customize per company. Must reference: specific projects, company values, market position, or team structure. Never give a generic answer.
-
-## Questions You Should Ask Interviewers
-
-### About the Role
-- "What does a typical week look like in this role?"
-- "What would success look like in the first 6 months?"
-- "What's the biggest challenge the team is facing right now?"
-
-### About the Team
-- "How big is the team, and how do you divide work?"
-- "What does the development/project lifecycle look like, from idea to production?"
-- "How do you onboard new team members?"
-
-### About Tech & Growth
-- "What's your current tech stack for [relevant area]?"
-- "Is there room to grow into more architectural or strategic decisions?"
-- "How does the team stay current with new tools and methods?"
-
-### About Culture (use these to prevent disappointment)
-- "How would you describe the team culture?"
-- "What does professional development look like here?"
-- "Is there flexibility for remote/hybrid work?"
-- "What's the balance between development/new projects and maintenance work?"
-- "How would you describe the leadership style in this team?"
-- "What do people who thrive here have in common?"
-
-## Phone/Video Interview Tips
-- Have STAR examples written out (use this file)
-- Keep a glass of water nearby
-- Smile when speaking (it changes your tone)
-- Ask for clarification if a question is vague
-- It's OK to take 5 seconds to think before answering
-- End with: "Is there anything else you'd like to know about my background?"
-
-## After the Application (Best Practice)
-
-### Follow-Up Etiquette
-- **Don't call to "stand out"** or to learn more about the role post-submission - this risks a negative impression
-- If the employer specified a timeline, respect it and wait
-- If no timeline was given and significant time has passed (2+ weeks), a brief call to ask about status is acceptable
-- If you have genuinely new, relevant information to share, a short follow-up is fine
-
-### Thank-You Notes
-- When you receive any update (interview invitation, rejection, or status update), send a brief thank-you message
-- Express appreciation for their time and the process
-- Keep it short (2-3 sentences)
-
-## Roleplay Guidelines
-When the user asks for interview practice:
-1. Ask which role/company to simulate
-2. Start with easy warm-up questions ("Tell me about yourself")
-3. Progress to role-specific technical questions
-4. Include 1-2 behavioral questions using the competencies from the job posting
-5. End with a tough question or curveball
-6. After each answer, give brief feedback: what worked, what to sharpen
-7. Suggest which STAR example would work best for each question
+### "What is your biggest weakness?"
+> "Early on, because I enjoyed taking on full ownership, I tended to handle entire pipelines myself rather than delegating or modularizing responsibilities across team members. Over the past year, I've actively improved this by writing thorough documentation, setting up clear CI/CD and linting rules, and structuring clean domain interfaces so that any engineer can easily onboard and contribute without friction."
